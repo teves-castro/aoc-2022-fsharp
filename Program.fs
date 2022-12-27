@@ -1,3 +1,4 @@
-﻿open Problem3
+﻿open Problem4
 
-printfn "%A" (sumBadgePriorities ())
+printfn "%A" (findFullOverlaps ())
+printfn "%A" (findAnyOverlaps ())

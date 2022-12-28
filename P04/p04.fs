@@ -1,5 +1,7 @@
 module Problem4
 
+open StringTools
+
 let input =
     """20-45,13-44
 7-8,8-28
@@ -1010,23 +1012,21 @@ let test_input =
 6-6,4-6
 2-6,4-8"""
 
-let splitBy (separator: char) (s: string) = s.Split(separator)
+
+let range (b, e) = [ b..e ] |> Set.ofList
 
 let convertToRange (s: string) =
     let firstPair (xs: 'a seq) = xs |> (Seq.pairwise >> Seq.head)
 
     s
     |> splitBy ','
-    |> Seq.map (splitBy '-')
-    |> Seq.map (Seq.map int)
-    |> Seq.map firstPair
-    |> Seq.map (fun (b, e) -> [ b..e ] |> Set.ofList)
+    |> Seq.map ((splitBy '-') >> (Seq.map int) >> firstPair >> range)
     |> firstPair
 
-let fullyEnclosed (s1, s2) =
+let areFullyEnclosed (s1, s2) =
     Set.isSuperset s1 s2 || Set.isSubset s1 s2
 
-let partiallyEnclosed (s1, s2) =
+let areIntersecting (s1, s2) =
     s1 |> Set.intersect s2 |> (Set.isEmpty >> not)
 
 let findOverlaps overlapFn =
@@ -1036,6 +1036,6 @@ let findOverlaps overlapFn =
     |> Seq.filter overlapFn
     |> Seq.length
 
-let findFullOverlaps () = findOverlaps fullyEnclosed
+let findFullOverlaps () = findOverlaps areFullyEnclosed
 
-let findAnyOverlaps () = findOverlaps partiallyEnclosed
+let findAnyOverlaps () = findOverlaps areIntersecting

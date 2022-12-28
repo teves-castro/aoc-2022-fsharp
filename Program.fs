@@ -1,4 +1,4 @@
-﻿open Problem4
+﻿open Problem5
 
-printfn "%A" (findFullOverlaps ())
-printfn "%A" (findAnyOverlaps ())
+printfn "%A" (top9000)
+printfn "%A" (top9001)

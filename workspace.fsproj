@@ -4,10 +4,12 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="String.fs" />
     <Compile Include="P01/p01.fs" />
     <Compile Include="P02/p02.fs" />
     <Compile Include="P03/p03.fs" />
     <Compile Include="P04/p04.fs" />
+    <Compile Include="P05/p05.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

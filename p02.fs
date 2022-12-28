@@ -1,5 +1,7 @@
 module Problem2
 
+open StringTools
+
 let input_string =
     """B Y
 A Z
@@ -2559,7 +2561,8 @@ let score (p, o) =
     | _ -> 0
 
 let simulate_rps (input: string) =
-    input.Trim().Split("\r\n")
+    input
+    |> splitBy '\n'
     |> List.ofArray
     |> List.map (fun s -> s.Split(" "))
     |> List.map (fun s -> s[0], s[1])
@@ -2567,9 +2570,14 @@ let simulate_rps (input: string) =
     |> List.sum
 
 let simulate_strategy (input: string) =
-    input.Trim().Split("\r\n")
+    input
+    |> splitBy '\n'
     |> List.ofArray
     |> List.map (fun s -> s.Split(" "))
     |> List.map (fun s -> s[0], s[1])
     |> List.map score
     |> List.sum
+
+let runProblem () =
+    printfn "%A" (simulate_rps input_string)
+    printfn "%A" (simulate_strategy input_string)

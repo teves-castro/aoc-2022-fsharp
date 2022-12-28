@@ -1039,3 +1039,7 @@ let findOverlaps overlapFn =
 let findFullOverlaps () = findOverlaps areFullyEnclosed
 
 let findAnyOverlaps () = findOverlaps areIntersecting
+
+let runProblem () =
+    printfn "%A" (findFullOverlaps ())
+    printfn "%A" (findAnyOverlaps ())

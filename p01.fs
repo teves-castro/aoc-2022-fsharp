@@ -1,6 +1,7 @@
 module Problem1
 
 open System
+open StringTools
 
 let input =
     """9548
@@ -2255,15 +2256,21 @@ let input =
 """
 
 let find_max_calories () =
-    input.Trim().Split("\r\n\r\n")
-    |> Seq.map (fun s -> s.Split("\r\n") |> Seq.map (Int64.Parse))
+    input
+    |> splitBy '\n'
+    |> Seq.map (fun s -> s |> splitBy '\n' |> Seq.map (Int64.Parse))
     |> Seq.map (Seq.sum)
     |> Seq.max
 
 let find_top_three_max_calories () =
-    input.Trim().Split("\r\n\r\n")
-    |> Seq.map (fun s -> s.Split("\r\n") |> Seq.map (Int64.Parse))
+    input
+    |> splitBy '\n'
+    |> Seq.map (fun s -> s |> splitBy '\n' |> Seq.map (Int64.Parse))
     |> Seq.map (Seq.sum)
     |> Seq.sortDescending
     |> Seq.take 3
     |> Seq.sum
+
+let runProblem () =
+    printfn "%A" (find_max_calories ())
+    printfn "%A" (find_top_three_max_calories ())

@@ -658,3 +658,7 @@ let sumBadgePriorities () =
     |> Seq.map findBadge
     |> Seq.map mapPriority
     |> Seq.sum
+
+let runProblem () =
+    printfn "%A" (sumPriorities ())
+    printfn "%A" (sumBadgePriorities ())

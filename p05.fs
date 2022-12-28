@@ -583,3 +583,7 @@ let top9001 =
     |> Seq.map (List.head)
     |> Array.ofSeq
     |> System.String
+
+let runProblem () =
+    printfn "%A" top9000
+    printfn "%A" top9001

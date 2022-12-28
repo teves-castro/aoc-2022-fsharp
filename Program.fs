@@ -1,4 +1,3 @@
-﻿open Problem5
+﻿open Problem2
 
-printfn "%A" (top9000)
-printfn "%A" (top9001)
+runProblem ()
